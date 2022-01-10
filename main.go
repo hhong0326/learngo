@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo"
-	"github.com/learngo/algorithms"
+	"github.com/learngo/downloads"
 	"github.com/learngo/scrapper"
 )
 
@@ -105,26 +105,23 @@ func main() {
 	// }
 
 	// scrapper
-	// e := echo.New()
+	e := echo.New()
 
-	// e.GET("/", handleHome)
-	// e.POST("/scrape", handleScrape)
+	e.GET("/", handleHome)
+	e.POST("/scrape", handleScrape)
+	e.GET("/naul", handlePic)
 
-	// e.Logger.Fatal(e.Start(":1323"))
-
-	//algorithms
-	// algorithms.StartQuick()
-	// algorithms.StartBST()
-	// algorithms.StartSelectSort()
-	// algorithms.StartBFS()
-	// algorithms.StartDFS()
-	// algorithms.StartLN()
-	// algorithms.Queens(0)
-	algorithms.StartTN()
+	e.Logger.Fatal(e.Start(":1323"))
 }
 
 func handleHome(c echo.Context) error {
 	return c.File("home.html")
+}
+
+func handlePic(c echo.Context) error {
+
+	downloads.Start()
+	return nil
 }
 
 func handleScrape(c echo.Context) error {
