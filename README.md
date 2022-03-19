@@ -1,3 +1,3 @@
 # learngo
 
-## web scrapper with Goroutine
+## web scrapper using Goroutines
